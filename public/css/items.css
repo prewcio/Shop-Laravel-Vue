@@ -1,0 +1,15 @@
+
+.items {
+    margin: 20px;
+    display: grid;
+    width: 70%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.item {
+    width: 200px;
+    height: 250px;
+    background: rgba(0,0,0, 0.2);
+    border-radius: 10px;
+    margin: 5px;
+}

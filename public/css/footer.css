@@ -1,0 +1,27 @@
+/* Footer */
+footer{
+    background-color: var(--color-gold);
+    padding: 20px;
+    color: var(--color-white);
+    font-size: 14px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+footer p {
+    margin-left: 150px;
+}
+@media screen and (max-width: 768px) {
+    footer {
+        background-color: var(--color-gold);
+        padding: 20px;
+        color: var(--color-white);
+        font-size: 14px;
+    }
+
+    footer p {
+        margin-left: 0px;
+        text-align: center;
+    }
+}
+/* === */
