@@ -18,7 +18,8 @@
                     {{ itemsQuantity }}
                 </p>
             </a>
-            <a href="/account"><i class="ri-account-circle-fill"></i></a>
+            <a href="/account" v-if="accStatus===1"><i class="ri-account-circle-fill"></i></a>
+            <a href="/login" v-if="accStatus===0"><i class="ri-account-circle-fill"></i></a>
         </div>
         <div class="hamburger-menu">
             <span class="bar-menu"></span>
@@ -34,6 +35,7 @@ export default {
     data: function () {
         return {
             itemsQuantity: 0,
+            accStatus: 0,
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         }
     },
@@ -48,6 +50,7 @@ export default {
             })
                 .then((response) => {
                     this.itemsQuantity = response.data.itemsQuantity;
+                    this.accStatus = response.data.accStatus;
                 })
                 .catch(function (error) {
                     console.log(error);

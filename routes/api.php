@@ -18,10 +18,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Cart or Items
-Route::get('token', 'App\Http\Controllers\Api\CartController@index');
+//Test
+Route::get('test/token', 'App\Http\Controllers\Api\TestingController@index');
+
+//Cart
 Route::post('cartCount', 'App\Http\Controllers\Api\CartController@cartCount');
-Route::get('getItems', 'App\Http\Controllers\Api\CartController@getItems');
+Route::post('getCart', 'App\Http\Controllers\Api\CartController@getCart');
+
+//Items
+Route::get('getItems', 'App\Http\Controllers\Api\ItemsController@getItems');
+
+//Categories
+Route::get('getCategories','App\Http\Controllers\Api\CategoriesController@getCategories');
 
 //User
 Route::post('accountInfo', 'App\Http\Controllers\Api\CustomerController@getUserInfo');

@@ -5,19 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Cart;
 use App\Customer;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CartResource;
 use App\Http\Resources\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index(){
-//        return "Test";
-    }
 
     public function cartCount(Request $request){
         $token = $request->input('csrf');
         $customer = Customer::where('sessionID', $token)->first();
+        $accStatus = 0;
         $carts = Cart::all();
         $items = array();
         $itQua = array();
@@ -29,10 +28,28 @@ class CartController extends Controller
                 $cart = 0;
             }
         }
-        return ['itemsQuantity'=>array_sum($itQua)];
+        if($customer==1){
+            $accStatus = 1;
+        }
+        return ['itemsQuantity'=>array_sum($itQua),'accStatus'=>$accStatus];
     }
 
-    public function getItems(){
-        return ProductResource::collection(Product::all());
+    public function getCart(Request $request){
+        $token = $request->input('csrf');
+        $carts = Cart::all();
+        $items = array();
+        $carty = array();
+        $loop = 0;
+        foreach ($carts as $cart){
+            if($cart->sessionID == $token){
+                $qua = $cart->itemQuantity;
+                $item = Product::where('id', $cart->itemID)->first();
+                $item->setAttribute('itemQuantity',$qua);
+                $items[] = $item;
+
+            }
+        }
+        return CartResource::collection($items);
+//        return ProductResource::collection($items);
     }
 }
