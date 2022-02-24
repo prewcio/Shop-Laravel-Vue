@@ -26,6 +26,7 @@ Vue.component('webfoot', require('./components/includes/Footer.vue').default);
 //Subpages
 Vue.component('items', require('./components/Items.vue').default);
 Vue.component('cart', require('./components/Cart.vue').default);
+Vue.component('order', require('./components/Order.vue').default);
 Vue.component('account', require('./components/Account').default);
 Vue.component('login', require('./components/Login').default);
 Vue.component('register', require('./components/Register').default);
