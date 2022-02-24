@@ -35,12 +35,17 @@ class CartController extends Controller
         $carts = Cart::all();
         $items = array();
         $carty = array();
+        $loop = 0;
         foreach ($carts as $cart){
             if($cart->sessionID == $token){
-                $items[] = Product::where('id', $cart->itemID)->first();
-                $carty[] = Cart::where('sessionID',$token)->first();
+                $qua = $cart->itemQuantity;
+                $item = Product::where('id', $cart->itemID)->first();
+                $item->setAttribute('itemQuantity',$qua);
+                $items[] = $item;
+
             }
         }
-        return ProductResource::collection($items);
+        return CartResource::collection($items);
+//        return ProductResource::collection($items);
     }
 }
