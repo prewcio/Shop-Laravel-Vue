@@ -2,13 +2,13 @@
     <div class="container contact" data-aos="fade-zoom" data-aos-duration="1000">
         <div class="split">
             <div class="contactForm">
-                <form action="{{ url('/sendMessage') }}" method="POST">
+                <form @submit.prevent="sendMessage">
                     <input type="text" name="name" id="name" placeholder="Imie i Nazwisko" required>
-                    <input type="email" name="email" id="email" placeholder="Email" required>
-                    <input type="tel" name="phone" id="phone" placeholder="Numer Telefonu" required>
-                    <textarea name="msg" id="msg" cols="30" rows="10" placeholder="Wiadomosc" required></textarea><br>
-                    <button type="submit">Wyślij</button>
+                    <input type="email" v-model="email" name="email" id="email" placeholder="Email" required>
+                    <input type="tel" v-model="phoneNumber" name="phone" id="phone" placeholder="Numer Telefonu" required>
+                    <textarea name="msg" v-model="message" id="msg" cols="30" rows="10" placeholder="Wiadomosc" required></textarea><br>
                     <p style="color:green" v-if="sent===1">Wiadomość wysłana!</p>
+                    <button type="submit">Wyślij</button>
                 </form>
             </div>
             <div class="contact-us">

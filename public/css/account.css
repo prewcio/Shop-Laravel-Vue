@@ -24,20 +24,6 @@ body {
     }
 }
 
-.loader {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.62);
-    width: 100vw;
-    height: 90%;
-    align-items: center;
-    justify-content: center;
-}
-.loader img {
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translateX(-50%) translateY(-50%);
-}
 .content a {
     font-size: 2rem;
     color: var(--color-gold);

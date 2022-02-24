@@ -11,9 +11,6 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index(){
-//        return "Test";
-    }
 
     public function cartCount(Request $request){
         $token = $request->input('csrf');
@@ -32,7 +29,15 @@ class CartController extends Controller
         return ['itemsQuantity'=>array_sum($itQua)];
     }
 
-    public function getItems(){
-        return ProductResource::collection(Product::all());
+    public function getCart(Request $request){
+        $token = $request->input('csrf');
+        $carts = Cart::all();
+        $items = array();
+        foreach ($carts as $cart){
+            if($cart->sessionID == $token){
+                $items[] = Product::where('id', $cart->itemID)->first();
+            }
+        }
+        return ProductResource::collection($items);
     }
 }

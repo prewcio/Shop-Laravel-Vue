@@ -19,12 +19,17 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+//Includes
 Vue.component('navi', require('./components/includes/Navi.vue').default);
-Vue.component('items', require('./components/Items.vue').default);
 Vue.component('webfoot', require('./components/includes/Footer.vue').default);
+
+//Subpages
+Vue.component('items', require('./components/Items.vue').default);
 Vue.component('account', require('./components/Account').default);
 Vue.component('login', require('./components/Login').default);
 Vue.component('register', require('./components/Register').default);
+Vue.component('contact', require('./components/Contact').default);
+Vue.component('categories', require('./components/Categories').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
