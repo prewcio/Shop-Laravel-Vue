@@ -5507,15 +5507,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Contact",
   data: function data() {
     return {
-      name: '',
-      email: '',
-      phoneNumber: '',
-      message: '',
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      name: "",
+      email: "",
+      phoneNumber: "",
+      message: "",
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content")
     };
   },
   methods: {
@@ -5529,10 +5553,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return fetch('/api/sendMessage', {
-                  method: 'POST',
+                return fetch("/api/sendMessage", {
+                  method: "POST",
                   headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                   },
                   body: JSON.stringify({
                     name: _this.name,
@@ -30288,128 +30312,124 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container contact" }, [
-    _c("div", { staticClass: "split" }, [
-      _c("div", { staticClass: "contactForm" }, [
-        _c(
-          "form",
-          {
-            on: {
-              submit: function ($event) {
-                $event.preventDefault()
-                return _vm.sendMessage.apply(null, arguments)
-              },
+  return _c("div", { staticClass: "container-contact" }, [
+    _c("div", { staticClass: "left-contact" }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function ($event) {
+              $event.preventDefault()
+              return _vm.sendMessage.apply(null, arguments)
             },
           },
-          [
-            _c("input", {
-              attrs: {
-                type: "text",
-                name: "name",
-                id: "name",
-                placeholder: "Imie i Nazwisko",
-                required: "",
+        },
+        [
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "name",
+              id: "name",
+              placeholder: "Imie i Nazwisko",
+              required: "",
+            },
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email",
               },
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.email,
-                  expression: "email",
-                },
-              ],
-              attrs: {
-                type: "email",
-                name: "email",
-                id: "email",
-                placeholder: "Email",
-                required: "",
+            ],
+            attrs: {
+              type: "email",
+              name: "email",
+              id: "email",
+              placeholder: "Email",
+              required: "",
+            },
+            domProps: { value: _vm.email },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
               },
-              domProps: { value: _vm.email },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.email = $event.target.value
-                },
+            },
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.phoneNumber,
+                expression: "phoneNumber",
               },
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.phoneNumber,
-                  expression: "phoneNumber",
-                },
-              ],
-              attrs: {
-                type: "tel",
-                name: "phone",
-                id: "phone",
-                placeholder: "Numer Telefonu",
-                required: "",
+            ],
+            attrs: {
+              type: "tel",
+              name: "phone",
+              id: "phone",
+              placeholder: "Numer Telefonu",
+              required: "",
+            },
+            domProps: { value: _vm.phoneNumber },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.phoneNumber = $event.target.value
               },
-              domProps: { value: _vm.phoneNumber },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.phoneNumber = $event.target.value
-                },
+            },
+          }),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.message,
+                expression: "message",
               },
-            }),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.message,
-                  expression: "message",
-                },
-              ],
-              attrs: {
-                name: "msg",
-                id: "msg",
-                cols: "30",
-                rows: "10",
-                placeholder: "Wiadomosc",
-                required: "",
+            ],
+            attrs: {
+              name: "msg",
+              id: "msg",
+              cols: "30",
+              rows: "10",
+              placeholder: "Wiadomosc",
+              required: "",
+            },
+            domProps: { value: _vm.message },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.message = $event.target.value
               },
-              domProps: { value: _vm.message },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.message = $event.target.value
-                },
-              },
-            }),
-            _c("br"),
-            _vm._v(" "),
-            _vm.sent === 1
-              ? _c("p", { staticStyle: { color: "green" } }, [
-                  _vm._v("Wiadomość wysłana!"),
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("button", { attrs: { type: "submit" } }, [_vm._v("Wyślij")]),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _vm._m(0),
+            },
+          }),
+          _c("br"),
+          _vm._v(" "),
+          _vm.sent === 1
+            ? _c("p", { staticStyle: { color: "green" } }, [
+                _vm._v("Wiadomość wysłana!"),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("button", { attrs: { type: "submit" } }, [_vm._v("Wyślij")]),
+        ]
+      ),
     ]),
     _vm._v(" "),
-    _vm._m(1),
+    _vm._m(0),
   ])
 }
 var staticRenderFns = [
@@ -30417,7 +30437,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-us" }, [
+    return _c("div", { staticClass: "right-contact" }, [
       _c("h1", [_vm._v("Kontakt do nas")]),
       _vm._v(" "),
       _c("p", [_vm._v("Lorem ipsum")]),
@@ -30433,23 +30453,6 @@ var staticRenderFns = [
       _c("i", { staticClass: "ri-instagram-fill" }),
       _vm._v(" "),
       _c("i", { staticClass: "ri-twitter-fill" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "split" }, [
-      _c("iframe", {
-        attrs: {
-          frameborder: "0",
-          scrolling: "no",
-          marginheight: "0",
-          marginwidth: "0",
-          id: "gmap_canvas",
-          src: "https://maps.google.com/maps?width=1215&height=400&hl=en&q=plac%20Defilad%201%20Warszawa+()&t=&z=13&ie=UTF8&iwloc=B&output=embed",
-        },
-      }),
     ])
   },
 ]
