@@ -10,7 +10,7 @@
                 <br>
                 <div class="space">
                     <div>
-                        <h5><strong>Produkty:{{ itemsQuantity }}</strong></h5>
+                        <h5><strong>Produkty:{{ itemQuantity }}</strong></h5>
                     </div>
                     <div>
                         <h5>Razem: <strong><span name="final-price">
@@ -22,15 +22,15 @@
             </div><br>
             <div class="box-element" v-for="item in items">
                 <div class="cart-row">
-                    <div style="flex:2"><img src="{{ item.productImg }}" alt="Stół" class="row-image"/></div>
+                    <div style="flex:2"><img src="{{ item.img }}" alt="Stół" class="row-image"/></div>
                     <div style="flex:2">
-                        <p>{{ item.productName }}</p>
+                        <p>{{ item.name }}</p>
                     </div>
                     <div style="flex:1">
-                        <p><span id="price">{{ item.productPrice }}</span> PLN</p>
+                        <p><span id="price">{{ item.price }}</span> PLN</p>
                     </div>
                     <div style="flex:1">
-                        <p class="quantity" id="qua">{{ item.itemQuantity }}</p>
+                        <p class="quantity" id="qua">{{ item. }}</p>
                         <div class="quantity">
 <!--                            <img class="chg-quantity" src="{{asset('img/arrow_up.png')}}" onclick="window.location.href = '{{ url('/addToCart/'.$items[$i]->id) }}'">-->
 <!--                            <img class=" chg-quantity" src="{{asset('img/arrow_down.png')}}" onclick="window.location.href = '{{ url('/removeFromCart/'.$items[$i]->id) }}'">-->
@@ -66,7 +66,6 @@ export default {
                 sessionID: this.csrf
             })
                 .then((response) => {
-                    this.itemsQuantity = response.data.itemsQuantity;
                     this.items = response.data;
                 })
                 .catch(function (error) {

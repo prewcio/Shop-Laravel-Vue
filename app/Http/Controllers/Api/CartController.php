@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Cart;
 use App\Customer;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CartResource;
 use App\Http\Resources\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
@@ -33,9 +34,11 @@ class CartController extends Controller
         $token = $request->input('csrf');
         $carts = Cart::all();
         $items = array();
+        $carty = array();
         foreach ($carts as $cart){
             if($cart->sessionID == $token){
                 $items[] = Product::where('id', $cart->itemID)->first();
+                $carty[] = Cart::where('sessionID',$token)->first();
             }
         }
         return ProductResource::collection($items);

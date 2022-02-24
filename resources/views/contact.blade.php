@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('includes/head')
-    <link href="{{ asset('css/main.css') }}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/contact.css') }}" media="all" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="app">

@@ -29829,136 +29829,129 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "container contact",
-      attrs: { "data-aos": "fade-zoom", "data-aos-duration": "1000" },
-    },
-    [
-      _c("div", { staticClass: "split" }, [
-        _c("div", { staticClass: "contactForm" }, [
-          _c(
-            "form",
-            {
-              on: {
-                submit: function ($event) {
-                  $event.preventDefault()
-                  return _vm.sendMessage.apply(null, arguments)
-                },
+  return _c("div", { staticClass: "container contact" }, [
+    _c("div", { staticClass: "split" }, [
+      _c("div", { staticClass: "contactForm" }, [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function ($event) {
+                $event.preventDefault()
+                return _vm.sendMessage.apply(null, arguments)
               },
             },
-            [
-              _c("input", {
-                attrs: {
-                  type: "text",
-                  name: "name",
-                  id: "name",
-                  placeholder: "Imie i Nazwisko",
-                  required: "",
+          },
+          [
+            _c("input", {
+              attrs: {
+                type: "text",
+                name: "name",
+                id: "name",
+                placeholder: "Imie i Nazwisko",
+                required: "",
+              },
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email",
                 },
-              }),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.email,
-                    expression: "email",
-                  },
-                ],
-                attrs: {
-                  type: "email",
-                  name: "email",
-                  id: "email",
-                  placeholder: "Email",
-                  required: "",
+              ],
+              attrs: {
+                type: "email",
+                name: "email",
+                id: "email",
+                placeholder: "Email",
+                required: "",
+              },
+              domProps: { value: _vm.email },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
                 },
-                domProps: { value: _vm.email },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.email = $event.target.value
-                  },
+              },
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.phoneNumber,
+                  expression: "phoneNumber",
                 },
-              }),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.phoneNumber,
-                    expression: "phoneNumber",
-                  },
-                ],
-                attrs: {
-                  type: "tel",
-                  name: "phone",
-                  id: "phone",
-                  placeholder: "Numer Telefonu",
-                  required: "",
+              ],
+              attrs: {
+                type: "tel",
+                name: "phone",
+                id: "phone",
+                placeholder: "Numer Telefonu",
+                required: "",
+              },
+              domProps: { value: _vm.phoneNumber },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.phoneNumber = $event.target.value
                 },
-                domProps: { value: _vm.phoneNumber },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.phoneNumber = $event.target.value
-                  },
+              },
+            }),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.message,
+                  expression: "message",
                 },
-              }),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.message,
-                    expression: "message",
-                  },
-                ],
-                attrs: {
-                  name: "msg",
-                  id: "msg",
-                  cols: "30",
-                  rows: "10",
-                  placeholder: "Wiadomosc",
-                  required: "",
+              ],
+              attrs: {
+                name: "msg",
+                id: "msg",
+                cols: "30",
+                rows: "10",
+                placeholder: "Wiadomosc",
+                required: "",
+              },
+              domProps: { value: _vm.message },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.message = $event.target.value
                 },
-                domProps: { value: _vm.message },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.message = $event.target.value
-                  },
-                },
-              }),
-              _c("br"),
-              _vm._v(" "),
-              _vm.sent === 1
-                ? _c("p", { staticStyle: { color: "green" } }, [
-                    _vm._v("Wiadomość wysłana!"),
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [_vm._v("Wyślij")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _vm._m(0),
+              },
+            }),
+            _c("br"),
+            _vm._v(" "),
+            _vm.sent === 1
+              ? _c("p", { staticStyle: { color: "green" } }, [
+                  _vm._v("Wiadomość wysłana!"),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("button", { attrs: { type: "submit" } }, [_vm._v("Wyślij")]),
+          ]
+        ),
       ]),
       _vm._v(" "),
-      _vm._m(1),
-    ]
-  )
+      _vm._m(0),
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
+  ])
 }
 var staticRenderFns = [
   function () {

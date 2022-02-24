@@ -1,5 +1,5 @@
 <template>
-    <div class="container contact" data-aos="fade-zoom" data-aos-duration="1000">
+    <div class="container contact">
         <div class="split">
             <div class="contactForm">
                 <form @submit.prevent="sendMessage">
