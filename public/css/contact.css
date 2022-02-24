@@ -1,7 +1,116 @@
 body {
     background-image: url("../img/blur2.png");
 }
-.contact {
+.container-contact {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 120px;
+}
+.left-contact {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    width: 50%;
+}
+.right-contact {
+    width: 50%;
+}
+.left-contact input {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 35px;
+    margin-top: 10px;
+    background-color: #E0E0E0;
+    color: var(--color-gray);
+    outline: 0;
+    border: none;
+    padding: 10px;
+}
+
+.left-contact textarea {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 450px;
+    background-color: #E0E0E0;
+    color: var(--color-gray);
+    outline: 0;
+    border: none;
+}
+
+.left-contact button {
+    font-size: 20px;
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    border: none;
+    outline: 0;
+    width: 450px;
+    height: 35px;
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+    cursor: pointer;
+}
+.right-contact {
+    text-align: center;
+}
+.right-contact h1 {
+    color: var(--color-black);
+    font-weight: 500;
+}
+
+.right-contact p {
+    font-size: 20px;
+    color: var(--color-gray);
+}
+
+.right-contact i {
+    color: var(--color-gold);
+    font-size: 40px;
+}
+@media screen and (max-width: 1024px) {
+    .container-contact {
+        flex-direction: column;
+        margin-top: 80px;
+    }
+    .left-contact {
+        width: 100%;
+    }
+    .right-contact {
+        margin-top: 50px;
+        width: 100%;
+    }
+    .right-contact h1 {
+        font-size: 25px;
+    }
+    
+    .right-contact p {
+        font-size: 15px;
+    }
+    
+    .right-contact i {
+        font-size: 30px;
+    }
+    .left-contact input {
+        font-size: 14px;
+        width: 350px;
+        height: 35px;
+    }
+    
+    .left-contact textarea {
+        font-size: 14px;
+        width: 350px;
+    }
+    
+    .left-contact button {
+        font-size: 18px;
+        width: 350px;
+        height: 35px;
+    }
+}
+/* .contact {
     margin-bottom: 80px;
 }
 
@@ -113,4 +222,4 @@ body {
     .split>*+* {
         margin-left: 2em;
     }
-}
+} */
