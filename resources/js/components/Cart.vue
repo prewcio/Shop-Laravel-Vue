@@ -10,11 +10,11 @@
                 <br>
                 <div class="space">
                     <div>
-                        <h5><strong>Produkty:{{ itemQuantity }}</strong></h5>
+                        <h5><strong>Produkty:</strong></h5>
                     </div>
                     <div>
                         <h5>Razem: <strong><span name="final-price">
-                                {{ finalPrice }}
+<!--                                {{ finalPrice }}-->
                             </span> PLN</strong></h5>
                     </div>
                     <div class="space-btn"><a href="/order">Potwierdzenie</a></div>
@@ -22,7 +22,7 @@
             </div><br>
             <div class="box-element" v-for="item in items">
                 <div class="cart-row">
-                    <div style="flex:2"><img src="{{ item.img }}" alt="Stół" class="row-image"/></div>
+                    <div style="flex:2"><img :src="item.img" alt="Stół" class="row-image"/></div>
                     <div style="flex:2">
                         <p>{{ item.name }}</p>
                     </div>
@@ -30,7 +30,7 @@
                         <p><span id="price">{{ item.price }}</span> PLN</p>
                     </div>
                     <div style="flex:1">
-                        <p class="quantity" id="qua">{{ item. }}</p>
+                        <p class="quantity" id="qua">{{ item.itemQuantity }}</p>
                         <div class="quantity">
 <!--                            <img class="chg-quantity" src="{{asset('img/arrow_up.png')}}" onclick="window.location.href = '{{ url('/addToCart/'.$items[$i]->id) }}'">-->
 <!--                            <img class=" chg-quantity" src="{{asset('img/arrow_down.png')}}" onclick="window.location.href = '{{ url('/removeFromCart/'.$items[$i]->id) }}'">-->
@@ -63,10 +63,10 @@ export default {
     methods: {
         loadCartItems: function () {
             axios.post('/api/getCart', {
-                sessionID: this.csrf
+                csrf: this.csrf
             })
                 .then((response) => {
-                    this.items = response.data;
+                    this.items = response.data.data;
                 })
                 .catch(function (error) {
                     console.log(error);
