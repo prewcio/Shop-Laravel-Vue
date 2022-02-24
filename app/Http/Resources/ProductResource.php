@@ -19,6 +19,7 @@ class ProductResource extends JsonResource
             'name' => $this->productName,
             'desc' => $this->productDesc,
             'price' => number_format($this->productPrice/100,2),
+            'old_price' => $this->productPrice,
             'img' => $this->productImg
         ];
     }

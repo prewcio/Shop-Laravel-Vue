@@ -18,6 +18,7 @@ class CartResource extends JsonResource
             'id' => $this->id,
             'name' => $this->productName,
             'price' => number_format($this->productPrice/100,2),
+            'price_no_dec' => $this->productPrice,
             'img' => $this->productImg,
             'quantity' => $this->itemQuantity
         ];
