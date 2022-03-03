@@ -15,29 +15,15 @@ if (document.getElementById('kurier')) {
         document.getElementById('delivery-type').innerText = "Kurier - InPost";
         document.getElementById('delPrice').innerText = 12.99;
         var value = (parseFloat(document.getElementById('cartPrice').innerText.replace(',', '')) + 12.99).toFixed(2);
-        var str = value.toString();
-        if (str.length > 6) {
-            var ok = str.slice(0, 1) + "," + str.slice(1);
-            console.log(ok);
-            document.getElementById('finalPrice').innerText = ok;
-        } else {
-            document.getElementById('finalPrice').innerText = str;
-        }
+        document.getElementById('finalPrice').innerText = value;
     }
 }
 if (document.getElementById('osobisty')) {
     document.getElementById('osobisty').onclick = function () {
         document.getElementById('delivery-type').innerText = "Odbiór Osobisty";
-        document.getElementById('delPrice').innerText = 0.00
-        var value = (parseFloat(document.getElementById('cartPrice').innerText.replace(',', '')) + 0.00).toFixed(2);
-        var str = value.toString();
-        if (str.length > 6) {
-            var ok = str.slice(0, 1) + "," + str.slice(1);
-            console.log(ok);
-            document.getElementById('finalPrice').innerText = ok;
-        } else {
-            document.getElementById('finalPrice').innerText = str;
-        }
+        document.getElementById('delPrice').innerText = (parseFloat(30.00).toFixed(2));
+        var value = (parseFloat(document.getElementById('cartPrice').innerText.replace(',', '')) + 30.00).toFixed(2);
+        document.getElementById('finalPrice').innerText = value;
     }
 }
 

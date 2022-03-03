@@ -5839,23 +5839,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Order"
+  name: "Order",
+  data: function data() {
+    return {
+      itemsQuantity: 0,
+      items: [],
+      priceLast: 0,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  mounted: function mounted() {
+    this.loadCartItems();
+  },
+  methods: {
+    loadCartItems: function loadCartItems() {
+      var _this = this;
+
+      axios.post('/api/getCart', {
+        csrf: this.csrf
+      }).then(function (response) {
+        _this.items = response.data.data;
+
+        _this.items.forEach(_this.countLastPrice);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    countLastPrice: function countLastPrice(item) {
+      this.priceLast += item.price_no_dec * item.quantity;
+    }
+  }
 });
 
 /***/ }),
@@ -30635,9 +30649,212 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { staticClass: "content" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "summary" },
+      [
+        _vm._l(_vm.items, function (item) {
+          return _c("div", { staticClass: "sum-item" }, [
+            _c("div", { staticClass: "item-info" }, [
+              _c("img", { attrs: { src: item.img, height: "100px" } }),
+              _vm._v(" "),
+              _c("h3", [_vm._v(_vm._s(item.name))]),
+              _vm._v(" "),
+              _c("br"),
+              _c("br"),
+              _vm._v(" "),
+              _c("span", { staticClass: "quan" }, [
+                _vm._v(_vm._s(item.quantity) + " szt."),
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "price" }, [
+                _vm._v(
+                  _vm._s(
+                    parseFloat(
+                      (item.price_no_dec * item.quantity) / 100
+                    ).toFixed(2)
+                  ) + " PLN"
+                ),
+              ]),
+            ]),
+          ])
+        }),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "sum-item" }, [
+          _c("h3", [
+            _vm._v("Wartość koszyka:\n                    "),
+            _c("span", { attrs: { id: "cartPrice" } }, [
+              _vm._v(_vm._s(parseFloat(_vm.priceLast / 100).toFixed(2))),
+            ]),
+            _vm._v(" zł"),
+          ]),
+          _vm._v(" "),
+          _vm._m(2),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sum-item" }, [
+          _c("h3", [
+            _vm._v("Do zapłaty: "),
+            _c("strong", [
+              _c("span", { attrs: { id: "finalPrice" } }, [
+                _vm._v(_vm._s(parseFloat(_vm.priceLast / 100).toFixed(2))),
+              ]),
+              _vm._v(" PLN\n                "),
+            ]),
+          ]),
+        ]),
+      ],
+      2
+    ),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form" }, [
+      _c("form", [
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("h1", { staticClass: "account" }, [_vm._v("Konto")]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "email", placeholder: "Adres E-mail", required: "" },
+        }),
+        _vm._v(" "),
+        _c("h1", { staticClass: "deliver" }, [_vm._v("Dostawa")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "delivery" }, [
+          _c("label", { attrs: { for: "kurier" } }, [
+            _c("input", {
+              attrs: {
+                type: "radio",
+                name: "dostawa",
+                id: "kurier",
+                value: "kurier",
+                required: "",
+              },
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "item" }, [
+              _c("span", [_vm._v("Kurier - InPost")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "ri-truck-line" }),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "osobisty" } }, [
+            _c("input", {
+              attrs: {
+                type: "radio",
+                name: "dostawa",
+                id: "osobisty",
+                value: "osobisty",
+                required: "",
+              },
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "item" }, [
+              _c("span", [_vm._v("Odbiór Osobisty")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "ri-home-2-line" }),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("h1", { staticClass: "payment" }, [_vm._v("Płatność")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "pay" }, [
+          _c("label", { attrs: { for: "dotpay" } }, [
+            _c("input", {
+              attrs: {
+                type: "radio",
+                name: "payment",
+                id: "dotpay",
+                value: "dotpay",
+                required: "",
+              },
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "item" }, [
+              _c("span", [_vm._v("Płatność online")]),
+              _vm._v(" "),
+              _c("img", {
+                attrs: {
+                  src: "/img/dotpay.png",
+                  alt: "dotpay",
+                  height: "25px",
+                },
+              }),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "payu" } }, [
+            _c("input", {
+              attrs: {
+                type: "radio",
+                name: "payment",
+                id: "payu",
+                value: "payu",
+                required: "",
+              },
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "item" }, [
+              _c("span", [_vm._v("Płatność online")]),
+              _vm._v(" "),
+              _c("img", {
+                attrs: { src: "/img/payu.png", alt: "PayU", height: "35px" },
+              }),
+            ]),
+          ]),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sum-item" }, [
+      _c("h3", [_vm._v("Sposób płatności:")]),
+      _vm._v(" "),
+      _c("p", { attrs: { id: "payment-type" } }, [_vm._v("BRAK")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Sposób dostawy:")]),
+      _vm._v(" "),
+      _c("p", { attrs: { id: "delivery-type" } }, [_vm._v("BRAK")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Zamówienie wyślemy:")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("Gdy zaksięgujemy płatność."),
+        _c("br"),
+        _vm._v("Potwierdzenie wysyłki dostaniesz mailem"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", [
+      _vm._v("Dostawa: "),
+      _c("span", { attrs: { id: "delPrice" } }, [_vm._v("0.00")]),
+      _vm._v(" zł"),
+    ])
+  },
+]
 render._withStripped = true
 
 

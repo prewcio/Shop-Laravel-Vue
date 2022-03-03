@@ -92,12 +92,12 @@ class CustomerController extends Controller
         }
     }
 
-    public function logout(){
-        $customer = Customer::where('sessionID', csrf_token())->first();
+    public function logout(Request $request){
+        $token = $request->input('token');
+        $customer = Customer::where('sessionID', $token)->first();
         if($customer){
             $customer->sessionID = "";
             $customer->save();
         }
-        return Redirect::to("/");
     }
 }

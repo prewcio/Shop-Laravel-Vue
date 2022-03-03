@@ -36,3 +36,4 @@ Route::post('accountInfo', 'App\Http\Controllers\Api\CustomerController@getUserI
 Route::post('checkLogged', 'App\Http\Controllers\Api\CustomerController@checkLogged');
 Route::post('loginCheck', 'App\Http\Controllers\Api\CustomerController@checkLogin');
 Route::post('registerCheck', 'App\Http\Controllers\Api\CustomerController@registerCheck');
+Route::post('logout', 'App\Http\Controllers\Api\CustomerController@logout');

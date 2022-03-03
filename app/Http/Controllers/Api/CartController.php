@@ -14,7 +14,7 @@ class CartController extends Controller
 {
 
     public function cartCount(Request $request){
-        $token = $request->input('csrf');
+        $token = $request->input('sessionID');
         $customer = Customer::where('sessionID', $token)->first();
         $accStatus = 0;
         $carts = Cart::all();
@@ -28,7 +28,7 @@ class CartController extends Controller
                 $cart = 0;
             }
         }
-        if($customer==1){
+        if($customer){
             $accStatus = 1;
         }
         return ['itemsQuantity'=>array_sum($itQua),'accStatus'=>$accStatus];
@@ -45,11 +45,11 @@ class CartController extends Controller
                 $qua = $cart->itemQuantity;
                 $item = Product::where('id', $cart->itemID)->first();
                 $item->setAttribute('itemQuantity',$qua);
+                $item->setAttribute('old_price',$item->productPrice);
                 $items[] = $item;
 
             }
         }
         return CartResource::collection($items);
-//        return ProductResource::collection($items);
     }
 }
