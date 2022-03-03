@@ -21,8 +21,8 @@ if (document.getElementById('kurier')) {
 if (document.getElementById('osobisty')) {
     document.getElementById('osobisty').onclick = function () {
         document.getElementById('delivery-type').innerText = "Odbiór Osobisty";
-        document.getElementById('delPrice').innerText = 0.00
-        var value = (parseFloat(document.getElementById('cartPrice').innerText.replace(',', '')) + 0.00).toFixed(2);
+        document.getElementById('delPrice').innerText = (parseFloat(30.00).toFixed(2));
+        var value = (parseFloat(document.getElementById('cartPrice').innerText.replace(',', '')) + 30.00).toFixed(2);
         document.getElementById('finalPrice').innerText = value;
     }
 }
